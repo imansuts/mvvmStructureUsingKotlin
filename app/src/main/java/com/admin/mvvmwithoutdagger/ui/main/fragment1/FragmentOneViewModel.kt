@@ -33,7 +33,7 @@ class FragmentOneViewModel : BaseViewModel<FragmentNavigator>() {
 
     fun getUserData() {
         compositeDisposable.add(fromObservable<List<UserDataModel>>(appDataBase.allUsers)
-                .map({ userDataModels-> userDataModels })
+//                .map({ userDataModels-> userDataModels })
                 .flatMap { getViewModelList(it) }
                 .subscribeOn(_scheduler_io)
                 .observeOn(_scheduler_ui)
