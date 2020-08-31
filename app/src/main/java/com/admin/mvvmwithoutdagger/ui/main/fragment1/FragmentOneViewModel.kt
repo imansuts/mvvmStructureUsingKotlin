@@ -32,8 +32,7 @@ class FragmentOneViewModel : BaseViewModel<FragmentNavigator>() {
 //    }
 
     fun getUserData() {
-        compositeDisposable.add(fromObservable<List<UserDataModel>>(appDataBase.allUsers)
-//                .map({ userDataModels-> userDataModels })
+        compositeDisposable.add(appDataBase.allUsers
                 .flatMap { getViewModelList(it) }
                 .subscribeOn(_scheduler_io)
                 .observeOn(_scheduler_ui)
@@ -42,6 +41,18 @@ class FragmentOneViewModel : BaseViewModel<FragmentNavigator>() {
                     openSourceItemsLiveData.setValue(userDataModels)
                 } ,  { Log.d(TAG, "getUserData_throwable: " + it.message) } ))
     }
+
+    /*fun getUserData() {
+        compositeDisposable.add(fromObservable<List<UserDataModel>>(appDataBase.allUsers)
+                .map({ userDataModels-> userDataModels })
+                .flatMap { getViewModelList(it) }
+                .subscribeOn(_scheduler_io)
+                .observeOn(_scheduler_ui)
+                .subscribe( { userDataModels->
+                    Log.d("check_db_size", ": " + userDataModels.size)
+                    openSourceItemsLiveData.setValue(userDataModels)
+                } ,  { Log.d(TAG, "getUserData_throwable: " + it.message) } ))
+    }*/
 
     fun getListData(): LiveData<List<ListItemsViewModel>?>? {
         return openSourceItemsLiveData
@@ -84,10 +95,10 @@ class FragmentOneViewModel : BaseViewModel<FragmentNavigator>() {
                 }.toList()
     }
 
-    @CheckReturnValue
+    /*@CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
     fun <T> fromObservable(observableSource: ObservableSource<out T>?): Single<T?> {
         ObjectHelper.requireNonNull(observableSource, "observableSource is null")
         return RxJavaPlugins.onAssembly(ObservableSingleSingle(observableSource, null))
-    }
+    }*/
 }
