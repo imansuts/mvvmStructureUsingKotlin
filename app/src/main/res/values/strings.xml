@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">MySampleMVVMKt</string>
-    <string name="api_base"></string>  <!-- replace with yours-->
+    <string name="app_name" translatable="false">MySampleMVVMKt</string>
+    <string name="api_base" translatable="false"></string>
+    <string name="full_name">Full Name</string>
+    <string name="submit">Submit</string>  <!-- replace with yours-->
 </resources>

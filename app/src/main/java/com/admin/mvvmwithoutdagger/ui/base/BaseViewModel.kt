@@ -32,10 +32,10 @@ abstract class BaseViewModel<N> : ViewModel() {
     protected val apiServiceWithJacksonFactory: ApiService
         get() = ApplicationClass.instance!!.apiServiceWithJacksonFactory
 
-    protected val apiServiceWithGsonFactory: ApiService
+    val apiServiceWithGsonFactory: ApiService
         get() = ApplicationClass.instance!!.apiServiceWithGsonFactory
 
-    protected val appSharedPref: AppSharedPref?
+    val appSharedPref: AppSharedPref?
         get() = ApplicationClass.instance!!.appSharedPref
 
     protected val appDataBase: AppDbHelper

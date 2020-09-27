@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 import com.admin.mvvmwithoutdagger.utils.CommonUtils
+import com.admin.mvvmwithoutdagger.utils.MyLocaleManager
 import com.admin.mvvmwithoutdagger.utils.NetworkUtils
 
 
@@ -65,6 +66,7 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setNewLocale(MyLocaleManager.language!!)
         performDataBinding()
     }
 
@@ -127,5 +129,11 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
             ft.commit()
         }
     }
+
+    open fun setNewLocale(language: String): Boolean {
+        MyLocaleManager.setNewLocale(resources, language)
+        return true
+    }
+
 }
 
