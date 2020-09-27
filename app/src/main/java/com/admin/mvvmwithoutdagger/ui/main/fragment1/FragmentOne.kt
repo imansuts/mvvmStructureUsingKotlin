@@ -57,11 +57,12 @@ class FragmentOne : BaseFragment<FragmentOneBinding, FragmentOneViewModel>(), Fr
                 userDataModel.name = s
                 fragmentOneViewModel!!.saveUserData(userDataModel)
 
-                if (fragmentOneViewModel?.appSharedPref?.language.equals("en")){
+                // for testing of language change
+                /*if (fragmentOneViewModel?.appSharedPref?.language.equals("en")){
                     baseActivity?.setNewLocale("ar")
                 }else{
                     baseActivity?.setNewLocale("en")
-                }
+                }*/
 
             } else {
                 Toast.makeText(baseActivity, "Please Enter Name", Toast.LENGTH_SHORT).show()
