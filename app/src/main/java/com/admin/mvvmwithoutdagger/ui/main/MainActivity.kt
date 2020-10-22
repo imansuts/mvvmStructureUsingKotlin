@@ -2,11 +2,13 @@ package com.admin.mvvmwithoutdagger.ui.main
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 
 import androidx.lifecycle.ViewModelProviders
 
 import com.admin.mvvmwithoutdagger.BR
 import com.admin.mvvmwithoutdagger.R
+import com.admin.mvvmwithoutdagger.ViewModelFactory
 import com.admin.mvvmwithoutdagger.databinding.ActivityMainBinding
 import com.admin.mvvmwithoutdagger.ui.base.BaseActivity
 import com.admin.mvvmwithoutdagger.ui.main.fragment1.FragmentOne
@@ -25,7 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
     override val viewModel: MainViewModel
         get() {
-            mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java!!)
+            mainViewModel = ViewModelProvider(this, ViewModelFactory(this)).get(MainViewModel::class.java!!)
             return mainViewModel as MainViewModel
         }
 
