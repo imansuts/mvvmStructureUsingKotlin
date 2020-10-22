@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.admin.mvvmwithoutdagger.BR
 import com.admin.mvvmwithoutdagger.R
+import com.admin.mvvmwithoutdagger.ViewModelFactory
 import com.admin.mvvmwithoutdagger.data.model.db.UserDataModel
 import com.admin.mvvmwithoutdagger.databinding.FragmentOneBinding
 import com.admin.mvvmwithoutdagger.ui.base.BaseFragment
@@ -30,7 +32,7 @@ class FragmentOne : BaseFragment<FragmentOneBinding, FragmentOneViewModel>(), Fr
 
     override val viewModel: FragmentOneViewModel
         get() {
-            fragmentOneViewModel = ViewModelProviders.of(this).get(FragmentOneViewModel::class.java!!)
+            fragmentOneViewModel = ViewModelProvider(this, ViewModelFactory(activity!!)).get(FragmentOneViewModel::class.java!!)
             return fragmentOneViewModel as FragmentOneViewModel
         }
 

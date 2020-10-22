@@ -1,5 +1,6 @@
 package com.admin.mvvmwithoutdagger.ui.main.fragment1
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +19,7 @@ import io.reactivex.plugins.RxJavaPlugins
 import okhttp3.MediaType
 import okhttp3.RequestBody
 
-class FragmentOneViewModel : BaseViewModel<FragmentNavigator>() {
+class FragmentOneViewModel(var context: Context) : BaseViewModel<FragmentNavigator>() {
 
     private val TAG = "FragmentOneViewModel"
     private val openSourceItemsLiveData = MutableLiveData<List<ListItemsViewModel>>()
