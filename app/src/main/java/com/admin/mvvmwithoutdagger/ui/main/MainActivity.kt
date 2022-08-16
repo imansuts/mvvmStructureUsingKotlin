@@ -17,8 +17,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
     private var mainViewModel: MainViewModel? = null
 
-    private var activityMainBinding: ActivityMainBinding? = null
-
     override val bindingVariable: Int
         get() = BR.viewModel
 
@@ -34,11 +32,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel!!.navigator = this
-        activityMainBinding = viewDataBinding
     }
 
     override fun onClick() {
         Toast.makeText(this, "Test Click", Toast.LENGTH_SHORT).show()
-        checkFragmentInBackstackAndOpen(FragmentOne.newInstance(), activityMainBinding!!.frameLayout.id)
+        checkFragmentInBackstackAndOpen(FragmentOne.newInstance(), viewDataBinding!!.frameLayout.id)
     }
 }
